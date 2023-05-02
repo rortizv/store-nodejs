@@ -9,8 +9,8 @@ const userService = new UserService();
 
 router.get('/', async (req, res, next) => {
   try {
-    const categories = await categoryService.find();
-    res.json(categories);
+    const users = await userService.find();
+    res.json(users);
   } catch (error) {
     next(error);
   }
@@ -21,8 +21,8 @@ router.get('/:id',
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      const category = await categoryService.findOne(id);
-      res.json(category);
+      const user = await userService.findOne(id);
+      res.json(user);
     } catch (error) {
       next(error);
     }
@@ -34,8 +34,8 @@ router.post('/',
   async (req, res, next) => {
     try {
       const body = req.body;
-      const newCategory = await categoryService.create(body);
-      res.status(201).json(newCategory);
+      const newUser = await userService.create(body);
+      res.status(201).json(newUser);
     } catch (error) {
       next(error);
     }
@@ -49,8 +49,8 @@ router.patch('/:id',
     try {
       const { id } = req.params;
       const body = req.body;
-      const category = await categoryService.update(id, body);
-      res.json(category);
+      const user = await userService.update(id, body);
+      res.json(user);
     } catch (error) {
       next(error);
     }
@@ -62,7 +62,7 @@ router.delete('/:id',
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      await categoryService.delete(id);
+      await userService.delete(id);
       res.status(201).json({id});
     } catch (error) {
       next(error);
