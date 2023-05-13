@@ -1,8 +1,8 @@
-const { models } = require('../libs/sequelize');
+const { models }= require('./../libs/sequelize');
 
 class CategoryService {
 
-  constructor() {
+  constructor(){
   }
   async create(data) {
     const newCategory = await models.Category.create(data);
@@ -10,15 +10,15 @@ class CategoryService {
   }
 
   async find() {
-    const result = await models.Category.findAll({});
-    return result;
+    const categories = await models.Category.findAll();
+    return categories;
   }
 
   async findOne(id) {
-    const result = await models.Category.findByPk(id, {
+    const category = await models.Category.findByPk(id, {
       include: ['products']
     });
-    return result;
+    return category;
   }
 
   async update(id, changes) {
